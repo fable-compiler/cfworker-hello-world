@@ -47,6 +47,7 @@ Wrangler Dev includes a file watcher. Make a small change to the response string
 ## Publish to Your Cloudflare Account
 To publish your worker to your Cloudflare account first configure a [route and zone id](https://developers.cloudflare.com/workers/cli-wrangler/configuration) in your `./wrangler.toml` file. Then execute `wrangler publish` this will deploy the worker as specified in the TOML file.
 
+&nbsp;
 > **Note to Fablers:** Unlike most Fable projects Yarn/FAKE is not used but rather Wrangler drives the build and deploy steps. This works because the line `webpack_config = "webpack.config.js"` in the `wrangler.toml` file is able to kick-off the Fable toolchain putting the JavaScript artificts into the output directory specifed in `webpack.config.js` from which Wrangler deploys them.
 >
 > To keep things as simple as possible the project manages packages via the `.fsproj` file rather than with Paket.
