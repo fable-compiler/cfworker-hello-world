@@ -1,8 +1,8 @@
 # Fable/FSharp 'Hello World' on Cloudflare Workers
 
 This Repo shows how to run 'Hello World' in [FSharp](https://docs.microsoft.com/en-us/dotnet/fsharp/get-started/install-fsharp) on Cloudflare Workers via the [Fable](https://fable.io) JavaScript transpiler. Workers are a simple inexpensive way to execute functions on Cloudflare edge network. They can be used for anything from utilities to full-on WebAPI's. For a more detailed description of Workers in FSharp see:
-* [Intro to Workers](https://github.com/jbeeko/cfworker-hello-world)
-* [FSharp WebAPI in Workers](https://github.com/jbeeko/cfworker-web-api)
+* [FSharp 'Hello World' Worker](https://github.com/jbeeko/cfworker-hello-world)
+* [FSharp WebAPI Worker](https://github.com/jbeeko/cfworker-web-api)
 
 ## Setting Up Your Environment
 
