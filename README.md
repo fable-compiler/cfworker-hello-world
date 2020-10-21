@@ -29,7 +29,7 @@ To authenticate wrangler commands it is recomended you [configure wrangler](http
 ### Generate a New Project
 To create a new project based on this template execute:
 ```
-wrangler generate projectname https://github.com/fable-compiler/fable-cfworker
+wrangler generate projectname https://github.com/fable-compiler/cfworker-hello-world
 ```
 
 ### Build and Deploy to Dev
