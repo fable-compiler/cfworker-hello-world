@@ -1,22 +1,12 @@
 module Worker
+
 open Fable.Core
 open Fable.Core.JS
+open Fable.Core.JsInterop
 
-open Browser.Types
 open Fetch
-
-// Interop types and functions not defined in Fable libraries
-type [<AllowNullLiteral>] FetchEvent =
-  inherit Event
-  abstract request: Request with get, set
-  abstract respondWith: response: U2<Promise<Response>, Response> -> Promise<Response>
-
-[<Emit("addEventListener('fetch', $0)")>]
-let addEventListener (e:FetchEvent->Promise<Response>) : unit = jsNative
-
-[<Emit("new Response($0, {status: $1})")>]
-let newResponse (a:string) (b:string) : Response = jsNative
-
+open Fetch.Utils
+open Fable.Cloudflare.Workers
 
 
 //The worker code is here. Define a request handler which creates an an
@@ -25,10 +15,12 @@ let private handleRequest (req:Request) =
     promise {
         // YOUR CODE HERE
         let txt = sprintf "Hello from Fable at: %A" System.DateTime.Now
-        return newResponse txt "200"}
+        let status : ResponseInit = !! {| status = "200" |}
+        let response = newResponse txt status
+        return response }
 
 
 // Register a listner for the ServiceWorker 'fetch' event. That listner
 // will extract the request and dispath it to the request handler.
-addEventListener (fun (e:FetchEvent) ->
-    e.respondWith (U2.Case1 (handleRequest e.request)))
+addEventListener_fetch (fun (e:FetchEvent) ->
+    e.respondWith (!^ (handleRequest e.request)))
