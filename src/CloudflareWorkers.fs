@@ -281,7 +281,8 @@ type [<AllowNullLiteral>] KVNamespaceListOptions =
     abstract cursor: string option with get, set
 
 type [<AllowNullLiteral>] DurableObjectEntries<'T> =
-    [<Emit "$0[$1]{{=$2}}">] abstract Item: key: string -> 'T with get, set
+    [<Emit "$0[$1]">] abstract Item: key: string -> 'T with get
+    [<Emit "$0[$1]=$2">] abstract Item: key: string -> 'T with set
 
 type [<AllowNullLiteral>] DurableObjectListOptions =
     abstract start: string option with get, set
@@ -330,7 +331,8 @@ type [<AllowNullLiteral>] DurableObjectNamespace =
     abstract get: (DurableObjectId -> DurableObjectStub) with get, set
 
 type [<AllowNullLiteral>] RequestInitCfPropertiesCacheTtlByStatus =
-    [<Emit "$0[$1]{{=$2}}">] abstract Item: key: string -> float with get, set
+    [<Emit "$0[$1]">] abstract Item: key: string -> float with get
+    [<Emit "$0[$1]=$2">]abstract Item: key: string -> float with set
 
 type [<AllowNullLiteral>] RequestInitCfPropertiesMinify =
     abstract javascript: bool option with get, set
