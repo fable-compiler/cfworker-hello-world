@@ -55,8 +55,8 @@ To publish your worker to your Cloudflare account first configure a [route and z
 &nbsp;
 > **Note to Contributors:** PRs are welcome. Test changes by:
 >
-> * Creating a new project from the template: `wrangler generate file:\\\path_to_local_repo`
-> * Building and deploying the worker from root of project: `wrangler dev`
+> * Creating a new project from the template: `wrangler generate my-proj file:\\\path_to_local_repo`
+> * Building and deploying the worker from root of generated my-proj: `wrangler dev`
 > * Testing the worker: `$ curl localhost:8787`
 >
 > `Hello from Fable at: Sun Nov 08 2020 17:41:19 GMT+0000 (Coordinated Universal Time)`
