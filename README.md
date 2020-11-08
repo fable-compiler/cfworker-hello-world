@@ -51,3 +51,12 @@ To publish your worker to your Cloudflare account first configure a [route and z
 > **Note to Fablers:** Unlike most Fable projects Yarn/FAKE is not used but rather Wrangler drives the build and deploy steps. This works because the line `webpack_config = "webpack.config.js"` in the `wrangler.toml` file is able to kick-off the Fable toolchain putting the JavaScript artificts into the output directory specifed in `webpack.config.js` from which Wrangler deploys them.
 >
 > To keep things as simple as possible the project manages packages via the `.fsproj` file rather than with Paket.
+
+&nbsp;
+> **Note to Contributors:** PRs are welcome. Test changes by:
+>
+> * Creating a new project from the template: `wrangler generate file:\\\path_to_local_repo`
+> * Building and deploying the worker from root of project: `wrangler dev`
+> * Testing the worker: `$ curl localhost:8787`
+>
+> `Hello from Fable at: Sun Nov 08 2020 17:41:19 GMT+0000 (Coordinated Universal Time)`
