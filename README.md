@@ -33,7 +33,11 @@ wrangler generate projectname https://github.com/fable-compiler/cfworker-hello-w
 ```
 
 ### Build and Deploy to Dev
-To build and deploy the new worker execute `wrangler dev` from repo root. This builds and pushes the code to a cloud environment and starts a stub running locally for testing. Cloudflare has a blog [explaining](https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost/) how this works.
+
+1. Run `dotnet tool restore`
+2. Run ` dotnet fable watch src --outDir tmp --run wrangler dev`
+
+This will run Fable in the watch mode, and `wrangler dev`. Fable compiles F# code to JS. Wrangler builds and pushes the code to a cloud environment and starts a stub running locally for testing. Cloudflare has a blog [explaining](https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost/) how this works.
 
 ### Test the Dev Worker:
 ```
