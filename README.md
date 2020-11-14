@@ -50,7 +50,7 @@ To publish your worker to your Cloudflare account first configure a [route and z
 &nbsp;
 > **Note to Contributors:** PRs are welcome. Test changes by:
 >
-> * Creating a new project from the template: `wrangler generate my-proj file:\\\path_to_local_repo`
+> * Creating a new project from the template: `wrangler generate my-proj file://"path_to_local_repo`"
 > * Building and deploying the worker from root of generated my-proj: `dotnet fable watch src --outDir tmp --run wrangler dev`
 > * Testing the worker: `$ curl localhost:8787`
 >
