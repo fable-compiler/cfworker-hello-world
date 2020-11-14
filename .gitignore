@@ -14,3 +14,4 @@ symbolCache.db
 /target
 /dist
 worker/
+tmp/

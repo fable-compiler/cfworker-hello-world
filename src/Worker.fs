@@ -1,5 +1,7 @@
 module Worker
 
+open System
+
 open Fable.Core
 open Fable.Core.JS
 open Fable.Core.JsInterop
@@ -14,7 +16,10 @@ open Fable.Cloudflare.Workers
 let private handleRequest (req:Request) =
     promise {
         // YOUR CODE HERE
-        let txt = sprintf "Hello from Fable at: %A" System.DateTime.Now
+        let txt =
+            sprintf "Hello from Fable at: %s %s"
+                (DateTime.Now.ToLongDateString())
+                (DateTime.Now.ToLongTimeString())
         let status : ResponseInit = !! {| status = "200" |}
         let response = newResponse txt status
         return response }

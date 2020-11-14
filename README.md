@@ -33,7 +33,10 @@ wrangler generate projectname https://github.com/fable-compiler/cfworker-hello-w
 ```
 
 ### Build and Deploy to Dev
-To build and deploy the new worker execute `wrangler dev` from repo root. This builds and pushes the code to a cloud environment and starts a stub running locally for testing. Cloudflare has a blog [explaining](https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost/) how this works.
+
+1. Run `dotnet tool restore`
+2. Run `dotnet fable watch src --outDir tmp --run wrangler dev`
+This will run Fable and `wrangler dev` both in watch mode. Fable compiles F# to JavaScript. Wrangler then pushes the new javascript to your accounts Cloudflare Dev environment and starts a stub running locally for testing. Cloudflare has a blog [explaining](https://blog.cloudflare.com/announcing-wrangler-dev-the-edge-on-localhost/) how this works.
 
 ### Test the Dev Worker:
 ```
@@ -41,22 +44,14 @@ MBPro:~ $ curl localhost:8787
 Hello from Fable at: Mon Oct 19 2020 19:30:39 GMT+0000 (Coordinated Universal Time)
 ```
 
-### File Watcher
-Wrangler Dev includes a file watcher. Make a small change to the response string in  `./src/Worker.fs` and save the file. Notice how the worker is automatically redeployed and a new invocation of cURL will return the modifed response.
-
 ## Publish to Your Cloudflare Account
-To publish your worker to your Cloudflare account first configure a [route and zone id](https://developers.cloudflare.com/workers/cli-wrangler/configuration) in your `./wrangler.toml` file. Then execute `wrangler publish` this will deploy the worker as specified in the TOML file.
-
-&nbsp;
-> **Note to Fablers:** Unlike most Fable projects Yarn/FAKE is not used but rather Wrangler drives the build and deploy steps. This works because the line `webpack_config = "webpack.config.js"` in the `wrangler.toml` file is able to kick-off the Fable toolchain putting the JavaScript artificts into the output directory specifed in `webpack.config.js` from which Wrangler deploys them.
->
-> To keep things as simple as possible the project manages packages via the `.fsproj` file rather than with Paket.
+To publish your worker to your Cloudflare account first configure a [route and zone id](https://developers.cloudflare.com/workers/cli-wrangler/configuration) in your `./wrangler.toml` file. Then execute `wrangler publish` this will deploy the worker javascript file as specified in the TOML file.
 
 &nbsp;
 > **Note to Contributors:** PRs are welcome. Test changes by:
 >
-> * Creating a new project from the template: `wrangler generate my-proj file:\\\path_to_local_repo`
-> * Building and deploying the worker from root of generated my-proj: `wrangler dev`
+> * Creating a new project from the template: `wrangler generate my-proj file://"path_to_local_repo`"
+> * Building and deploying the worker from root of generated my-proj: `dotnet fable watch src --outDir tmp --run wrangler dev`
 > * Testing the worker: `$ curl localhost:8787`
 >
 > `Hello from Fable at: Sun Nov 08 2020 17:41:19 GMT+0000 (Coordinated Universal Time)`
