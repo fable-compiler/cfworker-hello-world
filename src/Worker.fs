@@ -12,7 +12,7 @@ open Fable.Cloudflare.Workers
 
 
 //The worker code is here. Define a request handler which creates an an
-// appropreate Response and returns a Promise<Response>
+// appropriate Response and returns a Promise<Response>
 let private handleRequest (req:Request) =
     promise {
         // YOUR CODE HERE
@@ -25,7 +25,7 @@ let private handleRequest (req:Request) =
         return response }
 
 
-// Register a listner for the ServiceWorker 'fetch' event. That listner
-// will extract the request and dispath it to the request handler.
+// Register a listener for the ServiceWorker 'fetch' event. That listner
+// will extract the request and dispatch it to the request handler.
 addEventListener_fetch (fun (e:FetchEvent) ->
     e.respondWith (!^ (handleRequest e.request)))
