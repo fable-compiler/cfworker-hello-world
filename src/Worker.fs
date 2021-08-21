@@ -25,7 +25,7 @@ let private handleRequest (req:Request) =
         return response }
 
 
-// Register a listener for the ServiceWorker 'fetch' event. That listner
+// Register a listener for the ServiceWorker 'fetch' event. That listener
 // will extract the request and dispatch it to the request handler.
 addEventListener_fetch (fun (e:FetchEvent) ->
     e.respondWith (!^ (handleRequest e.request)))
