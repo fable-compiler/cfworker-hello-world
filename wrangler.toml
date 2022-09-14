@@ -1,10 +1,11 @@
 #For wrangle configuration documentation see:
-#https://developers.cloudflare.com/workers/tooling/wrangler/configuration/
+#https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name = "cfworker-hello-world"
-type = "webpack"
+main = "./worker/script.js" # by default, or whatever file webpack outputs
 #route = "<only needed if deploying to your domain>"
 #zone_id = "<only needed if deploying to your domain>"
-workers_dev = true
 
-webpack_config = "webpack.config.js"
+# Migration with Webpack to Wrangler: https://developers.cloudflare.com/workers/wrangler/migration/eject-webpack/
+[build]
+command = "npm run build"
