@@ -1,5 +1,5 @@
 #For wrangle configuration documentation see:
-#https://developers.cloudflare.com/workers/tooling/wrangler/configuration/
+https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name = "cfworker-hello-world"
 main = "./worker/script.js" # by default, or whatever file webpack outputs
