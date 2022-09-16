@@ -2,6 +2,7 @@
 #https://developers.cloudflare.com/workers/wrangler/configuration/
 
 name = "cfworker-hello-world"
+compatibility_date = "2022-09-16"
 main = "./worker/script.js" # by default, or whatever file webpack outputs
 #route = "<only needed if deploying to your domain>"
 #zone_id = "<only needed if deploying to your domain>"
